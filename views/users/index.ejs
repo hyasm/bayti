@@ -1,0 +1,42 @@
+<% messages.forEach(message => { %>
+<div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+<% }) %>
+
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3><%= statistics.active %></h3>
+                <p>الطلبات النشطة</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-check-double"></i>
+            </div>
+            <a href="/dashboard/requests?type=active" class="small-box-footer py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3><%= statistics.completed %></h3>
+                <p>الطلبات المكتملة</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <a href="/dashboard/requests?type=completed" class="small-box-footer py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-secondary text-white">
+            <div class="inner">
+                <h3><%= statistics.files %></h3>
+                <p>الملفات</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-archive"></i>
+            </div>
+            <a href="/dashboard/files" class="small-box-footer text-white py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+</div>

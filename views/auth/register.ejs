@@ -1,0 +1,67 @@
+<div class="login-box">
+    <div class="card card-primary card-outline">
+        <div class="card-header d-flex align-items-center">
+            <a href="/login" class="btn btn-default mr-auto"><i class="fas fa-chevron-right mr-2"></i>تسجيل الدخول</a>
+            <a href="/" class="h1"><%= settings.name %></a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">تسجيل حساب جديد</p>
+
+            <% messages.forEach(message => { %>
+            <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+            <% }) %>
+
+            <form action="/register" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="full_name" placeholder="الاسم كامل" value="<%= vv("full_name") %>" />
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="username" placeholder="اسم المستخدم" value="<%= vv("username") %>" />
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                    <input type="email" class="form-control" name="email" placeholder="البريد الالكتروني" value="<%= vv("email") %>" />
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-phone"></span>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="mobile" placeholder="رقم الجوال" value="<%= vv("mobile") %>" />
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password" placeholder="كلمة المرور" />
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password_confirm" placeholder="تأكيد كلمة المرور" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mb-0">تسجيل حساب جديد</button>
+            </form>
+        </div>
+    </div>
+</div>

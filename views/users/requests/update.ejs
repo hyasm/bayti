@@ -1,0 +1,52 @@
+<a href="/dashboard/requests" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة الطلبات</a>
+
+<div class="card card-success card-outline">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fas fa-pencil-alt mr-2"></i>تعديل الطلب</h3>
+    </div>
+    <form action="/dashboard/requests/<%= request.id %>/update" method="post">
+        <div class="card-body">
+            <% messages.forEach(message => { %>
+            <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+            <% }) %>
+
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>صك الأرض :</label>
+                        <div class="custom-file upload-modal">
+                            <input type="text" class="form-control" readonly name="deed_land" value="<%= vv('deed_land', request.deed_land) %>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>الكروكي :</label>
+                        <div class="custom-file upload-modal">
+                            <input type="text" class="form-control" readonly name="map" value="<%= vv('map', request.map) %>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>تصريح البناء :</label>
+                        <div class="custom-file upload-modal">
+                            <input type="text" class="form-control" readonly name="build_permit" value="<%= vv('build_permit', request.build_permit) %>" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>ملاحظات :</label>
+                        <textarea class="form-control" name="note" rows="5"><%= vv("note", request.note) %></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">تعديل الطلب</button>
+        </div>
+    </form>
+</div>

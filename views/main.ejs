@@ -1,0 +1,3 @@
+<% messages.forEach(message => { %>
+<div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+<% }) %>

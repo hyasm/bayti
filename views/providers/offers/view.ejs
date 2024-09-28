@@ -1,0 +1,61 @@
+<a href="/dashboard/offers/<%= requestId %>" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة العروض</a>
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-file-alt mr-2"></i>تفاصيل العرض</h3>
+    </div>
+    <div class="card-body">
+        <% messages.forEach(message => { %>
+        <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+        <% }) %> <% if (offer.status == "مرفوض") { %>
+        <div class="alert alert-warning">- هذا العروض تم رفضه بسبب : <%= offer.reject_reason || "-" %>.</div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>العرض : </label>
+                    <input type="text" class="form-control" value="<%= offer.id %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الحالة : </label>
+                    <input type="text" class="form-control" value="<%= offer.status %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>أنشئ في : </label>
+                    <input type="text" class="form-control" value="<%= toDate(offer.created_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>آخر تعديل : </label>
+                    <input type="text" class="form-control" value="<%= toDate(offer.updated_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>مدة التنفيذ : </label>
+                    <input type="text" class="form-control" value="<%= offer.duration %> يوم ≈ <%= toDate(offer.created_at, { add: [offer.duration, "days"], format: "DD/MM/YYYY" }) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>اجمالي التكاليف : </label>
+                    <input type="text" class="form-control" value="<%= offer.price %> ريال" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>ملاحظات : </label>
+                    <textarea class="form-control" rows="10" readonly><%= offer.note %></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

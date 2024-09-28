@@ -1,0 +1,67 @@
+<a href="/dashboard/procedures/<%= requestId %>" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة الإجراءات</a>
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-file-alt mr-2"></i>تفاصيل الاجراء</h3>
+    </div>
+    <div class="card-body">
+        <% messages.forEach(message => { %>
+        <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+        <% }) %>
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الإجراء : </label>
+                    <input type="text" class="form-control" value="<%= procedure.id %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الحالة : </label>
+                    <input type="text" class="form-control" value="<%= procedure.status %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>أنشئ في : </label>
+                    <input type="text" class="form-control" value="<%= toDate(procedure.created_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>آخر تعديل : </label>
+                    <input type="text" class="form-control" value="<%= toDate(procedure.updated_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>العنوان : </label>
+                    <input type="text" class="form-control" value="<%= procedure.title %>" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>ملاحظات : </label>
+                    <textarea class="form-control" rows="10" readonly><%= procedure.note %></textarea>
+                </div>
+            </div>
+        </div>
+        <label>المرفقات :</label>
+        <div class="row">
+            <% procedure.attachments.forEach((attachment, index) => { %>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <label>مرفق <%= (index + 1) %> :</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="<%= attachment.id %>" readonly />
+                        <div class="input-group-append">
+                            <a href="/uploads/<%= attachment.name %>" class="btn btn-default" target="_blank"><i class="fas fa-external-link-alt mr-2"></i>عرض</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>

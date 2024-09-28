@@ -1,0 +1,51 @@
+<a href="/dashboard/files" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة الملفات</a>
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-file-alt mr-2"></i>تفاصيل الملف</h3>
+    </div>
+    <div class="card-body">
+        <% messages.forEach(message => { %>
+        <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+        <% }) %>
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الملف : </label>
+                    <input type="text" class="form-control" value="<%= file.id %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>أنشئ في : </label>
+                    <input type="text" class="form-control" value="<%= toDate(file.created_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>آخر تعديل : </label>
+                    <input type="text" class="form-control" value="<%= toDate(file.updated_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>النوع : </label>
+                    <input type="text" class="form-control" value="<%= toMimeType(file.mime_type) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الحجم : </label>
+                    <input type="text" class="form-control" value="<%= (file.size / (1024*1024)).toFixed(2) %> ميقا بايت" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الوصف : </label>
+                    <input type="text" class="form-control" value="<%= file.description %>" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

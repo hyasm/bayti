@@ -1,0 +1,43 @@
+<div class="login-box">
+    <div class="card card-primary card-outline">
+        <div class="card-header d-flex align-items-center">
+            <a href="/" class="btn btn-default mr-auto"><i class="fas fa-home mr-2"></i>الرئيسية</a>
+            <a href="/" class="h1"><%= settings.name %></a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">تسجيل الدخول</p>
+            
+            <% messages.forEach(message => { %>
+            <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+            <% }) %>
+
+            <form action="/login" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="username" placeholder="اسم المستخدم" value="<%= vv("username") %>" autofocus />
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password" placeholder="كلمة المرور" />
+                </div>
+                <p class="mb-<%= settings.register ? '3' : '0' %>">
+                    <a href="forgot">نسيت كلمة المرور ؟</a>
+                </p>
+                <button type="submit" class="btn btn-primary btn-block mb-2">تسجيل الدخول</button>
+            </form>
+            <% if (settings.register) { %>
+            <p class="mb-0">
+                <a href="register" class="btn btn-secondary btn-block">تسجيل حساب جديد</a>
+            </p>
+            <% } %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<a href="/dashboard/procedures/<%= requestId %>" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة الإجراءات</a>
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-check-double mr-2"></i>مراجعة الإجراء</h3>
+    </div>
+    <form action="/dashboard/procedures/<%= requestId %>/<%= procedure.id %>/approve" method="post">
+        <div class="card-body">
+            <% messages.forEach(message => { %>
+            <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+            <% }) %>
+
+            <p class="font-weight-bold">- مراجعة الإجراء ( <span class="text-primary"><%= procedure.id %></span> ) من مقدم الخدمة ( <span class="text-primary"><%= procedure.user.full_name %></span> ).</p>
+            <p class="font-weight-bold">- لا يمكن التراجع عن هذا الإجراء بعد التنفيذ.</p>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>ملاحظات :</label>
+                        <textarea class="form-control" name="note" rows="5"><%= vv("note") %></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>المرفقات :</label>
+                        <div class="custom-file upload-modal" data-type="multiple" data-max="5">
+                            <input type="text" class="form-control" name="attachments" value="<%= vv('attachments') %>" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>صحة الإجراء :</label>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="agreement" name="agreement" value="yes" />
+                            <label for="agreement" class="custom-control-label">موافقة</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="rejection" name="agreement" value="no" />
+                            <label for="rejection" class="custom-control-label">رفض</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">تقييم الإجراء</button>
+        </div>
+    </form>
+</div>

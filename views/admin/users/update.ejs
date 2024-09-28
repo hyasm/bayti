@@ -1,0 +1,93 @@
+<a href="/dashboard/users" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة المستخدمين</a>
+
+<div class="card card-success card-outline">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fas fa-pencil-alt mr-2"></i>تعديل المستخدم</h3>
+    </div>
+    <form action="/dashboard/users/<%= user.id %>/update" method="post">
+        <div class="card-body">
+            <% messages.forEach(message => { %>
+            <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+            <% }) %>
+
+            <div class="alert alert-info">
+                - اذا لم ترغب في تغير كلمة المرور اترك الحقل فارغ.<br />
+                - اذا ترغب في جعل المستخدم معقب لدى مقدم الخدمة قم باختيار مقدم الخدمة مع تحديد الصلاحيات.
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>المستخدم : </label>
+                        <input type="text" class="form-control" value="<%= user.id %>" readonly />
+                    </div>
+                </div> 
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>اسم المستخدم : </label>
+                        <input type="text" class="form-control" name="username" value="<%= vv("username", user.username) %>" />
+                    </div>
+                </div> 
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>كلمة المرور : </label>
+                        <input type="password" class="form-control" name="password" />
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>الإسم : </label>
+                        <input type="text" class="form-control" name="full_name" value="<%= vv("full_name", user.full_name) %>" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>البريد الإلكتروني : </label>
+                        <input type="text" class="form-control" name="email" value="<%= vv("email", user.email) %>" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>رقم الجوال : </label>
+                        <input type="text" class="form-control" name="mobile" value="<%= vv("mobile", user.mobile) %>" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>الصلاحية : </label>
+                        <select class="form-control select-s" name="role" style="width: 100%">
+                            <% roles && roles.forEach(r => { %> 
+                            <option value="<%= r.id %>" <%= vv('role', user.role.id) == r.id ? 'selected' : '' %>><%= r.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>مقدم الخدمة : </label>
+                        <select class="form-control select-s" name="provider" style="width: 100%">
+                            <option value="" selected>-</option>
+                            <% providers && providers.forEach(p => { %> 
+                            <option value="<%= p._id %>" <%= vv('provider', user.provider && user.provider.id || '') == p._id ? 'selected' : '' %>><%= p.full_name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="form-group">
+                        <label>الحالة : </label>
+                        <select class="form-control select-ns" name="status" style="width: 100%">
+                            <% ["نشط", "معطل"].forEach(s => { %> 
+                            <option value="<%= s %>" <%= vv('status', user.status) == s ? 'selected' : '' %>><%= s %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">تعديل المستخدم</button>
+        </div>
+    </form>
+</div>

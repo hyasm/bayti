@@ -1,0 +1,69 @@
+<a href="/dashboard/users" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة المستخدمين</a>
+
+<div class="card card-primary card-outline">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fas fa-file-alt mr-2"></i>تفاصيل المستخدم</h3>
+    </div>
+    <div class="card-body">
+        <% messages.forEach(message => { %>
+        <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+        <% }) %>
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>المستخدم : </label>
+                    <input type="text" class="form-control" value="<%= user.id %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الحالة : </label>
+                    <input type="text" class="form-control" value="<%= user.status %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>أنشئ في : </label>
+                    <input type="text" class="form-control" value="<%= toDate(user.created_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>آخر تعديل : </label>
+                    <input type="text" class="form-control" value="<%= toDate(user.updated_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الإسم : </label>
+                    <input type="text" class="form-control" value="<%= user.full_name %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>البريد الإلكتروني : </label>
+                    <input type="text" class="form-control" value="<%= user.email %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>رقم الجوال : </label>
+                    <input type="text" class="form-control" value="<%= user.mobile %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الصلاحية : </label>
+                    <input type="text" class="form-control" value="<%= user.role.name %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>مقدم الخدمة : </label>
+                    <input type="text" class="form-control" value="<%= user.provider && user.provider.full_name || '-' %>" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

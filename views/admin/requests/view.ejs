@@ -1,0 +1,94 @@
+<a href="/dashboard/requests" class="btn btn-primary mb-3"><i class="fas fa-angle-right mr-2"></i>قائمة الطلبات</a>
+
+<div class="card card-primary card-outline">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fas fa-file-alt mr-2"></i>تفاصيل الطلب</h3>
+    </div>
+    <div class="card-body">
+        <% messages.forEach(message => { %>
+        <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+        <% }) %>
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الطلب : </label>
+                    <input type="text" class="form-control" value="<%= request.id %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>الحالة : </label>
+                    <input type="text" class="form-control" value="<%= request.status %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>المستخدم : </label>
+                    <input type="text" class="form-control" value="<%= request.user.full_name %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>مقدم الخدمة : </label>
+                    <input type="text" class="form-control" value="<%= request.provider && request.provider.full_name || '-' %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>أنشئ في : </label>
+                    <input type="text" class="form-control" value="<%= toDate(request.created_at) %>" readonly />
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>آخر تعديل : </label>
+                    <input type="text" class="form-control" value="<%= toDate(request.updated_at) %>" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>صك الأرض : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="<%= request.deed_land.id %>" readonly />
+                        <div class="input-group-append">
+                            <a href="/uploads/<%= request.deed_land.name %>" class="btn btn-default" target="_blank"><i class="fas fa-external-link-alt mr-2"></i>عرض</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>كروكي الموقع : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="<%= request.map.id %>" readonly />
+                        <div class="input-group-append">
+                            <a href="/uploads/<%= request.map.name %>" class="btn btn-default" target="_blank"><i class="fas fa-external-link-alt mr-2"></i>عرض</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>رخصة البناء : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="<%= request.build_permit.id %>" readonly />
+                        <div class="input-group-append">
+                            <a href="/uploads/<%= request.build_permit.name %>" class="btn btn-default" target="_blank"><i class="fas fa-external-link-alt mr-2"></i>عرض</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <label>ملاحظات : </label>
+                    <textarea class="form-control" rows="10" readonly><%= request.note %></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<% messages.forEach(message => { %>
+<div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+<% }) %>
+
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-primary text-white">
+            <div class="inner">
+                <h3><%= statistics.admins %></h3>
+                <p>الإداريين</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-user-cog"></i>
+            </div>
+            <a href="/dashboard/users" class="small-box-footer text-white py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-success text-white">
+            <div class="inner">
+                <h3><%= statistics.users %></h3>
+                <p>المستخدمين</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <a href="/dashboard/users" class="small-box-footer text-white py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-info text-white">
+            <div class="inner">
+                <h3><%= statistics.providers %></h3>
+                <p>مقدمي الخدمات</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <a href="/dashboard/users" class="small-box-footer text-white py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-warning text-white">
+            <div class="inner">
+                <h3><%= statistics.validators %></h3>
+                <p>مدققي البيانات</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-spell-check"></i>
+            </div>
+            <a href="/dashboard/users" class="small-box-footer text-white py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-danger text-white">
+            <div class="inner">
+                <h3><%= statistics.requests %></h3>
+                <p>الطلبات</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <a href="/dashboard/requests" class="small-box-footer text-white py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-6">
+        <div class="small-box bg-secondary text-white">
+            <div class="inner">
+                <h3><%= statistics.files %></h3>
+                <p>الملفات</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-archive"></i>
+            </div>
+            <a href="/dashboard/files" class="small-box-footer text-white py-2"><i class="fas fa-arrow-right mr-2"></i> عرض </a>
+        </div>
+    </div>
+</div>

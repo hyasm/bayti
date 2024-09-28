@@ -1,0 +1,52 @@
+<li class="nav-item">
+    <a href="/dashboard" class="nav-link<%= menuId == 'dashboard' ? ' active' : ''%>">
+        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <p>لوحة التحكم</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-clipboard-list"></i>
+        <p>
+            ادارة الطلبات
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/dashboard/requests" class="nav-link<%= menuId == 'requests' ? ' active' : ''%>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>الكل</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/dashboard/requests?filter=active" class="nav-link<%= menuId == 'requests_active' ? ' active' : ''%>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>النشطة</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/dashboard/requests?filter=completed" class="nav-link<%= menuId == 'requests_completed' ? ' active' : ''%>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>المكتملة</p>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-archive"></i>
+        <p>
+            ادارة الملفات
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/dashboard/files" class="nav-link<%= menuId == 'files' ? ' active' : ''%>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>الكل</p>
+            </a>
+        </li>
+    </ul>
+</li>

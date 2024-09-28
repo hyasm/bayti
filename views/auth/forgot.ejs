@@ -1,0 +1,27 @@
+<div class="login-box">
+    <div class="card card-navy card-outline">
+        <div class="card-header d-flex align-items-center">
+            <a href="/login" class="btn btn-default mr-auto"><i class="fas fa-chevron-right mr-2"></i>تسجيل الدخول</a>
+            <a href="/" class="h1"><%= settings.name %></a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">استعادة كلمة المرور</p>
+
+            <% messages.forEach(message => { %>
+            <div class="alert alert-<%= message.variant || 'primary' %>" id="app-alert"><%- message.body %></div>
+            <% }) %>
+
+            <form action="/forgot" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="email" placeholder="البريد الالكتروني" value="<%= vv("email") %>" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mb-0">استعادة كلمة المرور</button>
+            </form>
+        </div>
+    </div>
+</div>
